@@ -1,0 +1,10 @@
+---
+- hosts: nursery-pi
+  remote_user: pi
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: Update
+    apt: uprade=dist update_cache=yes
+  - name: Install some extra packages
+    apt: name=vim state=latest
