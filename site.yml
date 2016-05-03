@@ -7,12 +7,8 @@
   - name: Update
     apt: uprade=dist update_cache=yes
   - name: Install some extra packages
-    apt: name=vim state=latest
-  - name: clone the rpi cam web interface project
-    git: dest=~/Projects/RPi_Cam_Web_Interface repo=https://github.com/silvanmelchior/RPi_Cam_Web_Interface.git
-  - name: Find the list of shell scripts
-    find: use_regex=true patterns=*.sh paths=~/Projects/RPi_Cam_Web_Interface/
-    register: files
-  - name: Make the shell scripts executable
-    file: path={{ item.path }} mode=a+r
-    with_items: "{{ files }}"
+    apt: name={{ item }} state=latest
+    with_items:
+      - vim
+      - vlc
+      - python3-picamera
