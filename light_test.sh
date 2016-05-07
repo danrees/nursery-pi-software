@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+BRIGHT=${1:-0x32}
+echo Turning on IR lights
+i2cset -y 1 0x70 0x00 0xff
+
+echo Turning up the gain
+i2cset -y 1 0x70 0x09 0x0f
+
+echo Turning up the brightness
+i2cset -y 1 0x70 0x01 $BRIGHT
+i2cset -y 1 0x70 0x03 $BRIGHT
+i2cset -y 1 0x70 0x06 $BRIGHT
+i2cset -y 1 0x70 0x08 $BRIGHT
+
+
