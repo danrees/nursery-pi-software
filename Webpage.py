@@ -12,5 +12,5 @@ def welcome():
   return render_template('welcome.html', title='Welcome', welcome_message='Greetings from the world of tomorrow')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',debug=True)
+    app.run(host='0.0.0.0',debug=True,threaded=True)
 
